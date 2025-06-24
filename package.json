@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "lint": "eslint .",
+    "lint": "npx ultracite lint",
+    "format": "npx ultracite format",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -15,6 +16,7 @@
     "react-router-dom": "^7.6.2"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.0.5",
     "@eslint/js": "^9.25.0",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
@@ -23,8 +25,16 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
     "typescript": "~5.8.3",
     "typescript-eslint": "^8.30.1",
+    "ultracite": "5.0.12",
     "vite": "^6.3.5"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,jsonc,css,scss,md,mdx}": [
+      "npx ultracite format"
+    ]
   }
 }
