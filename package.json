@@ -8,7 +8,11 @@
     "build": "tsc -b && vite build",
     "lint": "npx ultracite lint",
     "format": "npx ultracite format",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "test": "vitest run src --environment jsdom",
+    "test:coverage": "vitest run src --environment jsdom --coverage",
+    "test:ui": "vitest src --environment jsdom --ui",
+    "test:watch": "vitest src --environment jsdom"
   },
   "dependencies": {
     "@fontsource/inter": "^5.2.6",
@@ -21,15 +25,20 @@
   },
   "devDependencies": {
     "@biomejs/biome": "2.0.5",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
     "@types/react": "^19.1.2",
     "@types/react-dom": "^19.1.2",
     "@vitejs/plugin-react": "^4.4.1",
+    "@vitest/ui": "^3.2.4",
     "globals": "^16.0.0",
     "husky": "^9.1.7",
+    "jsdom": "^26.1.0",
     "lint-staged": "^16.1.2",
     "typescript": "~5.8.3",
     "ultracite": "5.0.12",
-    "vite": "^6.3.5"
+    "vite": "^6.3.5",
+    "vitest": "^3.2.4"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,jsonc,css,scss,md,mdx}": [
