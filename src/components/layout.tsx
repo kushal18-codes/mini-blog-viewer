@@ -9,24 +9,26 @@ export default function Layout({
 }: Readonly<{ children: ReactNode }>) {
   return (
     <div
-      className="flex min-h-screen flex-col bg-gray-50 font-sans"
+      className="flex min-h-screen flex-col bg-white font-sans"
       style={{ fontFamily: 'Inter, sans-serif' }}
     >
-      <header className="bg-blue-600 py-4 text-white shadow">
+      <header className="border-gray-200 border-b bg-white py-3">
         <div className="container mx-auto flex items-center justify-between px-4">
           <div className="flex items-center gap-2">
-            <FileText className="h-7 w-7" />
-            <h1 className="font-bold text-2xl">Mini Blog Viewer</h1>
+            <FileText className="h-6 w-6 text-blue-600" />
+            <span className="font-semibold text-gray-900 text-lg tracking-tight">
+              Blog Viewer
+            </span>
           </div>
-          <nav className="flex gap-2">
+          <nav className="flex gap-1">
             <Link
-              className="flex items-center gap-1 rounded px-3 py-2 transition hover:bg-blue-700"
+              className="flex items-center gap-1 rounded px-3 py-1.5 text-gray-700 transition hover:bg-gray-100 hover:text-blue-600"
               to="/"
             >
               <HomeIcon className="h-5 w-5" /> Home
             </Link>
             <Link
-              className="flex items-center gap-1 rounded px-3 py-2 transition hover:bg-blue-700"
+              className="flex items-center gap-1 rounded px-3 py-1.5 text-gray-700 transition hover:bg-gray-100 hover:text-blue-600"
               to="/posts"
             >
               <FileText className="h-5 w-5" /> Posts
@@ -35,8 +37,8 @@ export default function Layout({
         </div>
       </header>
       <main className="container mx-auto flex-1 px-4 py-8">{children}</main>
-      <footer className="mt-8 bg-gray-800 py-4 text-center text-gray-200">
-        &copy; {new Date().getFullYear()} Mini Blog Viewer
+      <footer className="mt-8 border-gray-200 border-t bg-white py-4 text-center text-gray-400 text-sm">
+        {new Date().getFullYear()} Blog Viewer
       </footer>
     </div>
   );
