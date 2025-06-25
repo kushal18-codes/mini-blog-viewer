@@ -1,56 +1,54 @@
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
-import { describe, expect, it } from 'vitest';
+import { axe } from 'vitest-axe';
 import Layout from './layout';
 import '@testing-library/jest-dom/vitest';
+import 'vitest-axe/extend-expect';
+import { describe, expect, it } from 'vitest';
 
-const BLOG_VIEWER_REGEX = /blog viewer/i;
-const HOME_REGEX = /home/i;
-const POSTS_REGEX = /posts/i;
+const BLOG_TITLE = /blog viewer/i;
+const HOME_LINK = /home/i;
+const POSTS_LINK = /posts/i;
 
-describe('Layout', () => {
-  it('renders the app name', () => {
+describe('Layout component', () => {
+  const renderLayout = (children = <div>Test Content</div>) =>
     render(
       <MemoryRouter>
-        <Layout>Test Content</Layout>
+        <Layout>{children}</Layout>
       </MemoryRouter>
     );
-    const elements = screen.getAllByText(BLOG_VIEWER_REGEX);
-    expect(elements.length).toBeGreaterThan(0);
+
+  it('renders the app title "Blog Viewer"', () => {
+    renderLayout();
+    const titles = screen.getAllByText(BLOG_TITLE);
+    expect(titles.length).toBeGreaterThan(0);
   });
 
-  it('renders navigation links', () => {
-    render(
-      <MemoryRouter>
-        <Layout>Test Content</Layout>
-      </MemoryRouter>
-    );
-    const homeLinks = screen.getAllByRole('link', { name: HOME_REGEX });
-    const postsLinks = screen.getAllByRole('link', { name: POSTS_REGEX });
-    expect(homeLinks.length).toBeGreaterThan(0);
-    expect(postsLinks.length).toBeGreaterThan(0);
+  it('renders navigation links for Home and Posts', () => {
+    renderLayout();
+    expect(screen.getByRole('link', { name: HOME_LINK })).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: POSTS_LINK })).toBeInTheDocument();
   });
 
-  it('renders children', () => {
-    render(
-      <MemoryRouter>
-        <Layout>
-          <div>Test Content</div>
-        </Layout>
-      </MemoryRouter>
-    );
-    const elements = screen.getAllByText('Test Content');
-    expect(elements.length).toBeGreaterThan(0);
+  it('renders passed children content', () => {
+    renderLayout(<div>Custom Test Content</div>);
+    expect(screen.getByText('Custom Test Content')).toBeInTheDocument();
   });
 
-  it('renders footer with current year', () => {
-    render(
+  it('shows current year in footer', () => {
+    renderLayout();
+    const currentYear = new Date().getFullYear();
+    const yearMatcher = (content: string) =>
+      content.includes(currentYear.toString());
+    expect(screen.getByText(yearMatcher)).toBeInTheDocument();
+  });
+
+  it('has no a11y violations', async () => {
+    const { container } = render(
       <MemoryRouter>
-        <Layout>Test Content</Layout>
+        <Layout>Test</Layout>
       </MemoryRouter>
     );
-    const year = new Date().getFullYear();
-    const elements = screen.getAllByText(new RegExp(`${year}`));
-    expect(elements.length).toBeGreaterThan(0);
+    expect(await axe(container)).toHaveNoViolations();
   });
 });

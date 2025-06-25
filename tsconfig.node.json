@@ -7,10 +7,10 @@
     "skipLibCheck": true,
 
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "moduleDetection": "force",
-    "noEmit": true,
+    "noEmit": false,
+    "composite": true,
 
     "strict": true,
     "noUnusedLocals": true,
@@ -19,5 +19,5 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["vite.config.ts"]
+  "include": ["src", "vitest.config.ts", "vitest-axe.d.ts"]
 }
