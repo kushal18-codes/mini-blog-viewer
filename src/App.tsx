@@ -1,11 +1,17 @@
 import './app.css';
 
-function App() {
+import { Route, Routes } from 'react-router-dom';
+import Layout from './components/layout';
+import Home from './pages/home';
+import Posts from './pages/posts';
+
+export default function App() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gray-100">
-      <h1 className="font-bold text-4xl">Mini Blog Viewer</h1>
-    </main>
+    <Layout>
+      <Routes>
+        <Route element={<Home />} path="/" />
+        <Route element={<Posts />} path="/posts" />
+      </Routes>
+    </Layout>
   );
 }
-
-export default App;
