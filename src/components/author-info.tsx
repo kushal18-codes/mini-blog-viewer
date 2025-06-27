@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
+import { API_BASE_URL } from '../constants';
 import type { User } from '../types';
+import { fetchJson } from '../utils';
 
-export default function AuthorInfo({ userId }: Readonly<{ userId: number }>) {
+function AuthorInfoContent({ userId }: Readonly<{ userId: number }>) {
   const [author, setAuthor] = useState<User | null>(null);
 
   useEffect(() => {
-    fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
-      .then((res) => res.json())
-      .then((data) => setAuthor(data));
+    fetchJson<User>(`${API_BASE_URL}/users/${userId}`).then(setAuthor);
   }, [userId]);
 
   if (!author) {
@@ -15,10 +15,18 @@ export default function AuthorInfo({ userId }: Readonly<{ userId: number }>) {
   }
 
   return (
-    <div style={{ marginTop: '1rem' }}>
+    <div className="mt-4">
       <h4>Author: {author.name}</h4>
       <p>Email: {author.email}</p>
       <p>Company: {author.company.name}</p>
     </div>
+  );
+}
+
+export default function AuthorInfo({ userId }: Readonly<{ userId: number }>) {
+  return (
+    <Suspense fallback={<p>Loading author info...</p>}>
+      <AuthorInfoContent userId={userId} />
+    </Suspense>
   );
 }

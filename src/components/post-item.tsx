@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import type { Post } from '../types';
+import { truncateText } from '../utils';
 
 export default function PostItem({ post }: Readonly<{ post: Post }>) {
   return (
-    <div style={{ marginBottom: '1rem' }}>
+    <div className="mb-4">
       <h3>{post.title}</h3>
-      <p>{post.body.substring(0, 60)}...</p>
+      <p>{truncateText(post.body, 60)}</p>
       <Link to={`/posts/${post.id}`}>Read more</Link>
     </div>
   );

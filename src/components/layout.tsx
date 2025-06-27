@@ -8,10 +8,7 @@ export default function Layout({
   children,
 }: Readonly<{ children: ReactNode }>) {
   return (
-    <div
-      className="flex min-h-screen flex-col bg-white font-sans"
-      style={{ fontFamily: 'Inter, sans-serif' }}
-    >
+    <div className="font-sans">
       <header className="border-gray-200 border-b bg-white py-3">
         <div className="container mx-auto flex items-center justify-between px-4">
           <div className="flex items-center gap-2">
