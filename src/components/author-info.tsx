@@ -30,7 +30,8 @@ function AuthorInfoContent({ userId }: Readonly<{ userId: number }>) {
     <div className="rounded-lg border bg-gray-50 p-4 shadow-sm">
       <h4 className="mb-2 font-bold text-gray-900 text-xl">Author</h4>
       <p className="text-gray-600">
-        <span className="font-medium">Name:</span> {author.name}
+        <span className="font-medium">Name:</span> {author.firstName}{' '}
+        {author.lastName}
       </p>
       <p className="text-gray-600">
         <span className="font-medium">Email:</span> {author.email}
