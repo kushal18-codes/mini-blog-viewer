@@ -2,9 +2,14 @@ import PostList from '../components/post-list';
 
 export default function Posts() {
   return (
-    <div>
-      <h1>Posts</h1>
-      <p>Here you can view all the posts.</p>
+    <div className="space-y-8">
+      <div className="text-center">
+        <h1 className="font-bold text-4xl">Explore Posts</h1>
+        <p className="text-gray-600 text-lg">
+          Discover a wide range of articles. Use the filters below to find
+          exactly what you're looking for.
+        </p>
+      </div>
       <PostList />
     </div>
   );
