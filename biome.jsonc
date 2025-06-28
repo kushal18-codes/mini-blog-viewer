@@ -5,6 +5,9 @@
     "rules": {
       "nursery": {
         "noUnknownAtRule": "off"
+      },
+      "style": {
+        "useFilenamingConvention": "warn"
       }
     }
   }
