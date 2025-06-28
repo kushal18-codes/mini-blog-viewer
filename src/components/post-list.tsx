@@ -84,6 +84,7 @@ function PostListContent() {
         />
         <div className="flex items-center gap-4">
           <select
+            aria-label="Sort by"
             className="rounded border px-4 py-2"
             onChange={(e) => setSortBy(e.target.value)}
             value={sortBy}
