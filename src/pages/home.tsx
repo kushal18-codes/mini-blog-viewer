@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export default function Home() {
   return (
     <div className="space-y-12">
@@ -12,12 +14,12 @@ export default function Home() {
             updates on a variety of topics. Your go-to place for quick reads and
             deep dives.
           </p>
-          <a
+          <Link
             className="inline-block transform rounded-full bg-white px-8 py-3 font-semibold text-blue-600 text-lg shadow-lg transition duration-300 ease-in-out hover:scale-105 hover:bg-gray-100"
-            href="/posts"
+            to="/posts"
           >
             Explore Posts
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -66,12 +68,12 @@ export default function Home() {
             looking for inspiration, information, or just a good read, you'll
             find it here.
           </p>
-          <a
+          <Link
             className="inline-block transform rounded-full bg-blue-600 px-10 py-4 font-semibold text-white text-xl shadow-lg transition duration-300 ease-in-out hover:scale-105 hover:bg-blue-700"
-            href="/posts"
+            to="/posts"
           >
             View All Posts
-          </a>
+          </Link>
         </div>
       </section>
     </div>
