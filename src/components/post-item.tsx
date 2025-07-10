@@ -11,6 +11,7 @@ export default function PostItem({ post }: Readonly<{ post: Post }>) {
       <p className="mb-2 text-gray-600">{truncateText(post.body, 100)}</p>
       <div className="mb-4 flex items-center text-gray-500 text-sm">
         <span className="mr-2">❤️ {post.reactions.likes} Reactions</span>
+        <span className="mr-2">👀 {post.views} Views</span>
         {post.tags && post.tags.length > 0 && (
           <div className="flex flex-wrap gap-1">
             {post.tags.map((tag) => (

@@ -90,7 +90,6 @@ function PostListContent() {
             value={sortBy}
           >
             <option value="title">Sort by Title</option>
-            <option value="reactions">Sort by Reactions</option>
             <option value="views">Sort by Views</option>
           </select>
           <select

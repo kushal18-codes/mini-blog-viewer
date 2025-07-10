@@ -8,6 +8,7 @@ export interface Post {
     likes: number;
     dislikes: number;
   };
+  views: number;
 }
 
 export interface User {
