@@ -50,7 +50,7 @@ export default function Home() {
               <img
                 alt="About Us"
                 className="rounded-lg shadow-xl"
-                src="https://via.placeholder.com/400"
+                src="https://cataas.com/cat"
               />
             </div>
           </div>
